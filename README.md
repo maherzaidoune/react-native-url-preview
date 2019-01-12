@@ -1,6 +1,8 @@
 
 # react-native-react-native-url-preview 🐜
 
+[![NPM](https://nodei.co/npm/react-native-url-preview.png)](https://www.npmjs.com/package/react-native-url-preview)
+
 ## Getting started 🐜
 
 `$ npm install react-native-url-preview --save`
@@ -9,8 +11,16 @@
 ```javascript
 import RNUrlPreview from 'react-native-url-preview';
 
-<RNUrlPreview text={"https://github.com/maherzaidoune"}/>
+<RNUrlPreview text={"https://www.youtube.com/watch?v=Kmiw4FYTg2U"}/>
 ```
+
+## Examples🐜
+
+Please refer to the [react-native-url-preview example](https://github.com/maherzaidoune/RNUrlPreviewExample) provided to see how `react-native-url-preview` can be used .
+
+## Demo🐜
+
+![](https://github.com/maherzaidoune/RNUrlPreviewExample/blob/master/rnUrlPreviewer.gif)
 
 ## Customization 🐜
 
@@ -27,5 +37,7 @@ import RNUrlPreview from 'react-native-url-preview';
 | titleNumberOfLines | NO | 2 | `number` | self explanatory i believe |
 | descriptionNumberOfLines | NO | Ipad?4:3 | `number` | self explanatory i believe |
 
+## Credits 🐜
 
-
+- Thanks to [marouan frih](https://github.com/Madm0x) for the REGEX
+- extract information from a URL with [react-native-link-preview](https://www.npmjs.com/package/react-native-link-preview)
