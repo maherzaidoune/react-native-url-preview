@@ -3,7 +3,7 @@
 
 ## Getting started 🐜
 
-`$ npm install react-native-react-native-url-preview --save`
+`$ npm install react-native-url-preview --save`
 
 ## Usage 🐜
 ```javascript
