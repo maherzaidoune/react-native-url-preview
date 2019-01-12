@@ -1,7 +1,7 @@
 {
   "name": "react-native-url-preview",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.1",
+  "description": "react native url previewer",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,16 +9,23 @@
   "keywords": [
     "react-native"
   ],
-  "author": "",
-  "license": "",
+  "author": "Zaidoune Maher",
+  "license": "MIT",
   "peerDependencies": {
     "react-native": "^0.41.2",
     "react-native-windows": "0.41.0-rc.1"
   },
   "dependencies": {
-    "react-native": "latest",
-    "react": "latest",
     "prop-types": "^15.5.7",
     "react-native-link-preview": "^1.3.7"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maherzaidoune/react-native-url-preview.git"
+  },
+  "bugs": {
+    "url": "https://github.com/maherzaidoune/react-native-url-preview/issues"
+  },
+  "homepage": "https://github.com/maherzaidoune/react-native-url-preview#readme"
 }
