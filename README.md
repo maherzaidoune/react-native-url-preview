@@ -20,7 +20,7 @@ Please refer to the [react-native-url-preview example](https://github.com/maherz
 
 ## Demo🐜
 
-![](https://github.com/maherzaidoune/RNUrlPreviewExample/blob/master/rnUrlPreviewer.gif)
+![](https://github.com/maherzaidoune/RNUrlPreviewExample/blob/master/screens/irnUrlPreviewer.gif)
 ![](https://github.com/maherzaidoune/RNUrlPreviewExample/blob/master/screens/image.png)
 
 ## Customization 🐜
