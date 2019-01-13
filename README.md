@@ -11,7 +11,7 @@
 ```javascript
 import RNUrlPreview from 'react-native-url-preview';
 
-<RNUrlPreview text={"https://www.youtube.com/watch?v=Kmiw4FYTg2U"}/>
+<RNUrlPreview text={"any text to be parsed , https://www.youtube.com/watch?v=Kmiw4FYTg2U"}/>
 ```
 
 ## Examples🐜
@@ -21,6 +21,7 @@ Please refer to the [react-native-url-preview example](https://github.com/maherz
 ## Demo🐜
 
 ![](https://github.com/maherzaidoune/RNUrlPreviewExample/blob/master/rnUrlPreviewer.gif)
+![](https://github.com/maherzaidoune/RNUrlPreviewExample/blob/master/screens/image.png)
 
 ## Customization 🐜
 
