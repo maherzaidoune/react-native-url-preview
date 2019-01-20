@@ -24,9 +24,9 @@ Please refer to the [react-native-url-preview example](https://github.com/maherz
 ## Demo🐜
 
 <p align="center" >
-   <a href="https://reactnative.gallery/FaridSafi/gifted-chat">
-    <img alt="youtube" src="https://github.com/maherzaidoune/RNUrlPreviewExample/blob/master/screens/rnUrlPreviewer.gif" width="260" height="510" />
-     <img alt="medium" src="https://github.com/maherzaidoune/RNUrlPreviewExample/blob/master/screens/medium.gif" width="260" height="510" />
+   <a href="https://github.com/maherzaidoune/react-native-url-preview">
+        <img alt="youtube" src="https://github.com/maherzaidoune/RNUrlPreviewExample/blob/master/screens/rnUrlPreviewer.gif" width="260" height="510" />
+        <img alt="medium" src="https://github.com/maherzaidoune/RNUrlPreviewExample/blob/master/screens/medium.gif" width="260" height="510" />
  </a>
 </p>
 
