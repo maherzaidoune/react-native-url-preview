@@ -1,7 +1,7 @@
 import React from "react";
 import * as LinkPreview from "react-native-link-preview";
 import PropTypes from 'prop-types';
-import {Image, Linking, Platform, Text, TouchableOpacity, View} from "react-native";
+import {Image, Linking, Platform, Text, TouchableOpacity, View, ViewPropTypes} from "react-native";
 
 const REGEX = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/g;
 
@@ -57,48 +57,48 @@ export default class RNUrlPreview extends React.Component {
     renderImage = (imageLink,faviconLink,imageStyle,faviconStyle)=> {
         return(
                 imageLink ?
-            <Image
-        style={imageStyle}
-        source={{uri: imageLink}}
-        resizeMode={'cover'}
-        /> : faviconLink ?
-        <Image
-        style={faviconStyle}
-        source={{uri: faviconLink}}
-        resizeMode={'cover'}
-        /> : null
-    )
+                    <Image
+                        style={imageStyle}
+                        source={{uri: imageLink}}
+                        resizeMode={'cover'}
+                    /> : faviconLink ?
+                    <Image
+                        style={faviconStyle}
+                        source={{uri: faviconLink}}
+                        resizeMode={'cover'}
+                    /> : null
+        )
     }
     renderText = (showTitle,title,description,textContainerStyle,titleStyle,descriptionStyle,titleNumberOfLines,descriptionNumberOfLines)=> {
         return(
             <View style={textContainerStyle}>
-            {
-                showTitle && <Text
-        numberOfLines={titleNumberOfLines}
-        style={titleStyle}
-            >{title}</Text>
-    }
-        {
-            description && <Text
-            numberOfLines={descriptionNumberOfLines}
-            style={descriptionStyle}
-                >{description}</Text>
-        }
-    </View>
-    )
+                {
+                    showTitle && <Text
+                    numberOfLines={titleNumberOfLines}
+                    style={titleStyle}
+                        >{title}</Text>
+                }
+                {
+                    description && <Text
+                    numberOfLines={descriptionNumberOfLines}
+                    style={descriptionStyle}
+                        >{description}</Text>
+                }
+            </View>
+        )
     }
     renderLinkPreview = (text,containerStyle,
                          imageLink,faviconLink,imageStyle,faviconStyle,
                          showTitle,title,description,textContainerStyle,titleStyle,descriptionStyle,titleNumberOfLines,descriptionNumberOfLines)=> {
         return(
             <TouchableOpacity
-        style={[styles.containerStyle,containerStyle]}
-        activeOpacity={0.9}
-        onPress={()=>this._onLinkPressed()}
-    >
-        {this.renderImage(imageLink,faviconLink,imageStyle,faviconStyle)}
-        {this.renderText(showTitle,title,description,textContainerStyle,titleStyle,descriptionStyle,titleNumberOfLines,descriptionNumberOfLines)}
-    </TouchableOpacity>
+                style={[styles.containerStyle,containerStyle]}
+                activeOpacity={0.9}
+                onPress={()=>this._onLinkPressed()}
+            >
+                {this.renderImage(imageLink,faviconLink,imageStyle,faviconStyle)}
+                {this.renderText(showTitle,title,description,textContainerStyle,titleStyle,descriptionStyle,titleNumberOfLines,descriptionNumberOfLines)}
+            </TouchableOpacity>
     )
     }
 
@@ -168,15 +168,15 @@ RNUrlPreview.defaultProps = {
 
 RNUrlPreview.propTypes = {
     text: PropTypes.string,
-    containerStyle: PropTypes.style,
-    imageStyle: PropTypes.style,
-    faviconStyle: PropTypes.style,
-    textContainerStyle: PropTypes.style,
+    containerStyle: ViewPropTypes.style,
+    imageStyle: ViewPropTypes.style,
+    faviconStyle: ViewPropTypes.style,
+    textContainerStyle: ViewPropTypes.style,
     title: PropTypes.bool,
     titleStyle: Text.propTypes.style,
-    titleNumberOfLines: PropTypes.numberOfLines,
+    titleNumberOfLines: Text.propTypes.numberOfLines,
     descriptionStyle: Text.propTypes.style,
-    descriptionNumberOfLines: PropTypes.numberOfLines,
+    descriptionNumberOfLines: Text.propTypes.numberOfLines,
 };
 
 

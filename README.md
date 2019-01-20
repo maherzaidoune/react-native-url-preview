@@ -3,6 +3,9 @@
 
 [![NPM](https://nodei.co/npm/react-native-url-preview.png)](https://www.npmjs.com/package/react-native-url-preview)
 
+
+Parses text and wraps URLs , transform the url to a beautiful link preview 
+
 ## Getting started 🐜
 
 `$ npm install react-native-url-preview --save`
@@ -20,9 +23,12 @@ Please refer to the [react-native-url-preview example](https://github.com/maherz
 
 ## Demo🐜
 
-
-| ![](https://github.com/maherzaidoune/RNUrlPreviewExample/blob/master/screens/rnUrlPreviewer.gif) | ![](https://github.com/maherzaidoune/RNUrlPreviewExample/blob/master/screens/medium.gif) |
-
+<p align="center" >
+   <a href="https://reactnative.gallery/FaridSafi/gifted-chat">
+    <img alt="youtube" src="https://github.com/maherzaidoune/RNUrlPreviewExample/blob/master/screens/rnUrlPreviewer.gif" width="260" height="510" />
+     <img alt="medium" src="https://github.com/maherzaidoune/RNUrlPreviewExample/blob/master/screens/medium.gif" width="260" height="510" />
+ </a>
+</p>
 
 ## Customization 🐜
 
