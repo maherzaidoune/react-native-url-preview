@@ -13,7 +13,7 @@ import {
 
 const REGEX = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/g;
 
-export default class RNUrlPreview extends React.PureComponent {
+export default class RNUrlPreview extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
