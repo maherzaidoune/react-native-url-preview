@@ -74,13 +74,13 @@ export default class RNUrlPreview extends React.PureComponent {
       <Image
         style={imageStyle}
         source={{ uri: imageLink }}
-        resizeMode={"cover"}
+        resizeMode={"contain"}
       />
     ) : faviconLink ? (
       <Image
         style={faviconStyle}
         source={{ uri: faviconLink }}
-        resizeMode={"cover"}
+        resizeMode={"contain"}
       />
     ) : null;
   };
