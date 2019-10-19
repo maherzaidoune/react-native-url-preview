@@ -24,10 +24,8 @@ Please refer to the [react-native-url-preview example](https://github.com/maherz
 ## Demo🐜
 
 <p align="center" >
-   <a href="https://github.com/maherzaidoune/react-native-url-preview">
-        <img alt="youtube" src="https://github.com/maherzaidoune/RNUrlPreviewExample/blob/master/screens/rnUrlPreviewer.gif" width="260" height="510" />
-        <img alt="medium" src="https://github.com/maherzaidoune/RNUrlPreviewExample/blob/master/screens/medium.gif" width="260" height="510" />
- </a>
+        <a href="https://github.com/maherzaidoune/react-native-url-preview"><img src="https://i.imgur.com/dJLTTRr.gif" title="source: imgur.com" /></a>
+        <a href="https://imgur.com/ruyH0PR"><img src="https://i.imgur.com/ruyH0PR.gif" title="source: imgur.com" /></a>
 </p>
 
 ## Customization 🐜
