@@ -1,5 +1,5 @@
 import React from "react";
-import * as LinkPreview from "react-native-link-preview";
+import LinkPreview from 'link-preview-js';
 import PropTypes from "prop-types";
 import {
   Image,

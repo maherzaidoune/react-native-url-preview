@@ -48,4 +48,4 @@ Please refer to the [react-native-url-preview example](https://github.com/maherz
 ## Credits 🐜
 
 - Thanks to [marouan frih](https://github.com/Madm0x) for the REGEX
-- extract information from a URL with [react-native-link-preview](https://www.npmjs.com/package/react-native-link-preview)
+- extract information from a URL with [link-preview-js](https://github.com/ospfranco/link-preview-js)
