@@ -1,5 +1,5 @@
 import React from "react";
-import LinkPreview from 'link-preview-js';
+import LinkPreview from "link-preview-js";
 import PropTypes from "prop-types";
 import {
   Image,
@@ -56,11 +56,7 @@ export default class RNUrlPreview extends React.PureComponent {
   };
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.text !== null) {
-      this.getPreview(nextProps.text);
-    } else {
-      this.setState({ isUri: false });
-    }
+    this.getPreview(nextProps.text);
   }
 
   _onLinkPressed = () => {
