@@ -72,7 +72,7 @@ export default class RNUrlPreview extends React.PureComponent {
     faviconLink,
     imageStyle,
     faviconStyle,
-    imageProps = { resizeMode: "contain" }
+    imageProps
   ) => {
     return imageLink ? (
       <Image style={imageStyle} source={{ uri: imageLink }} {...imageProps} />
@@ -239,7 +239,8 @@ RNUrlPreview.defaultProps = {
     alignSelf: "flex-start",
     fontFamily: "Helvetica"
   },
-  descriptionNumberOfLines: Platform.isPad ? 4 : 3
+  descriptionNumberOfLines: Platform.isPad ? 4 : 3,
+  imageProps: { resizeMode: "contain" }
 };
 
 RNUrlPreview.propTypes = {
