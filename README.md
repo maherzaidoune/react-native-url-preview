@@ -1,5 +1,5 @@
 
-# react-native-react-native-url-preview 🐜
+# react-native-url-preview 🐜
 
 [![NPM](https://nodei.co/npm/react-native-url-preview.png)](https://www.npmjs.com/package/react-native-url-preview)
 
