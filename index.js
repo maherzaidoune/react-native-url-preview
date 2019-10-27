@@ -1,5 +1,5 @@
 import React from "react";
-import LinkPreview from 'link-preview-js';
+import LinkPreview from "link-preview-js";
 import PropTypes from "prop-types";
 import {
   Image,
@@ -28,24 +28,18 @@ export default class RNUrlPreview extends React.PureComponent {
 
   getPreview = text => {
     LinkPreview.getPreview(text)
-      .then(data => {
+      .then(({ title, description, images, favicons }) => {
         this.setState({
           isUri: true,
-          linkTitle: data.title ? data.title : undefined,
-          linkDesc: data.description ? data.description : undefined,
+          linkTitle: title || undefined,
+          linkDesc: description || undefined,
           linkImg:
-            data.images && data.images.length > 0
-              ? data.images.find(function(element) {
-                  return (
-                    element.includes(".png") ||
-                    element.includes(".jpg") ||
-                    element.includes(".jpeg")
-                  );
-                })
+            images && images.length > 0
+              ? images.find(element => element.endsWith(/.(jpeg|png|jpg)/))
               : undefined,
           linkFavicon:
-            data.favicons && data.favicons.length > 0
-              ? data.favicons[data.favicons.length - 1]
+            favicons && favicons.length > 0
+              ? favicons[favicons.length - 1]
               : undefined
         });
       })
