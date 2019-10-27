@@ -27,34 +27,32 @@ export default class RNUrlPreview extends React.PureComponent {
   }
 
   getPreview = text => {
-    let url = text && text.match(REGEX) && text.match(REGEX)[0];
-    if (url) {
-      LinkPreview.getPreview(url)
-        .then(data => {
-          this.setState({
-            isUri: true,
-            linkTitle: data.title ? data.title : undefined,
-            linkDesc: data.description ? data.description : undefined,
-            linkImg:
-              data.images && data.images.length > 0
-                ? data.images.find(function(element) {
-                    return (
-                      element.includes(".png") ||
-                      element.includes(".jpg") ||
-                      element.includes(".jpeg")
-                    );
-                  })
-                : undefined,
-            linkFavicon:
-              data.favicons && data.favicons.length > 0
-                ? data.favicons[data.favicons.length - 1]
-                : undefined
-          });
-        })
-        .catch(error => console.log("LinkPreview error : ", error));
-    } else {
-      this.setState({ isUri: false });
-    }
+    LinkPreview.getPreview(text)
+      .then(data => {
+        this.setState({
+          isUri: true,
+          linkTitle: data.title ? data.title : undefined,
+          linkDesc: data.description ? data.description : undefined,
+          linkImg:
+            data.images && data.images.length > 0
+              ? data.images.find(function(element) {
+                  return (
+                    element.includes(".png") ||
+                    element.includes(".jpg") ||
+                    element.includes(".jpeg")
+                  );
+                })
+              : undefined,
+          linkFavicon:
+            data.favicons && data.favicons.length > 0
+              ? data.favicons[data.favicons.length - 1]
+              : undefined
+        });
+      })
+      .catch(error => {
+        this.setState({ isUri: false });
+        console.log("LinkPreview error : ", error);
+      });
   };
 
   componentWillReceiveProps(nextProps) {
