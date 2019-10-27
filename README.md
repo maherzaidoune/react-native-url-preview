@@ -30,18 +30,19 @@ Please refer to the [react-native-url-preview example](https://github.com/maherz
 
 ## Customization 🐜
 
-| Parameter | Required? | Default | Type | Description |
-|:---|:---:|:---|:---|:---|
-| text | YES | Null | `string` | The text that is parsed and where the URL is retrieved |
-| title | NO | True | `Boolean` | determine whether the URL title is displyed or not |
-| titleStyle | NO | defaultStyle | `style` | self explanatory i believe |
-| containerStyle | NO | defaultStyle | `style` | you can pass a custom container style |
-| imageStyle | NO | defaultStyle | `style` | you can pass a custom image style |
-| faviconStyle | NO | defaultStyle | `style` | you can pass a custom favicon style |
-| textContainerStyle | NO | defaultStyle | `style` | you can pass a custom style for the text container |
-| descriptionStyle | NO | defaultStyle | `style` | self explanatory i believe |
-| titleNumberOfLines | NO | 2 | `number` | self explanatory i believe |
-| descriptionNumberOfLines | NO | Ipad?4:3 | `number` | self explanatory i believe |
+| Parameter                | Required? | Default                    | Type      | Description                                            |
+| :----------------------- | :-------: | :------------------------- | :-------- | :----------------------------------------------------- |
+| text                     |    YES    | Null                       | `string`  | The text that is parsed and where the URL is retrieved |
+| title                    |    NO     | True                       | `Boolean` | determine whether the URL title is displyed or not     |
+| titleStyle               |    NO     | defaultStyle               | `style`   | self explanatory i believe                             |
+| containerStyle           |    NO     | defaultStyle               | `style`   | you can pass a custom container style                  |
+| imageStyle               |    NO     | defaultStyle               | `style`   | you can pass a custom image style                      |
+| faviconStyle             |    NO     | defaultStyle               | `style`   | you can pass a custom favicon style                    |
+| textContainerStyle       |    NO     | defaultStyle               | `style`   | you can pass a custom style for the text container     |
+| descriptionStyle         |    NO     | defaultStyle               | `style`   | self explanatory i believe                             |
+| titleNumberOfLines       |    NO     | 2                          | `number`  | self explanatory i believe                             |
+| descriptionNumberOfLines |    NO     | Ipad?4:3                   | `number`  | self explanatory i believe                             |
+| imageProps               |    NO     | `{ resizeMode: "contain"}` | `object`  | you can pass a custom props to image                   |
 
 ## Credits 🐜
 

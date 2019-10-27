@@ -1,5 +1,5 @@
 import React from "react";
-import LinkPreview from 'link-preview-js';
+import LinkPreview from "link-preview-js";
 import PropTypes from "prop-types";
 import {
   Image,
@@ -67,18 +67,20 @@ export default class RNUrlPreview extends React.PureComponent {
     Linking.openURL(this.props.text.match(REGEX)[0]);
   };
 
-  renderImage = (imageLink, faviconLink, imageStyle, faviconStyle) => {
+  renderImage = (
+    imageLink,
+    faviconLink,
+    imageStyle,
+    faviconStyle,
+    imageProps
+  ) => {
     return imageLink ? (
-      <Image
-        style={imageStyle}
-        source={{ uri: imageLink }}
-        resizeMode={"contain"}
-      />
+      <Image style={imageStyle} source={{ uri: imageLink }} {...imageProps} />
     ) : faviconLink ? (
       <Image
         style={faviconStyle}
         source={{ uri: faviconLink }}
-        resizeMode={"contain"}
+        {...imageProps}
       />
     ) : null;
   };
@@ -124,7 +126,8 @@ export default class RNUrlPreview extends React.PureComponent {
     titleStyle,
     descriptionStyle,
     titleNumberOfLines,
-    descriptionNumberOfLines
+    descriptionNumberOfLines,
+    imageProps
   ) => {
     return (
       <TouchableOpacity
@@ -132,7 +135,13 @@ export default class RNUrlPreview extends React.PureComponent {
         activeOpacity={0.9}
         onPress={() => this._onLinkPressed()}
       >
-        {this.renderImage(imageLink, faviconLink, imageStyle, faviconStyle)}
+        {this.renderImage(
+          imageLink,
+          faviconLink,
+          imageStyle,
+          faviconStyle,
+          imageProps
+        )}
         {this.renderText(
           showTitle,
           title,
@@ -158,7 +167,8 @@ export default class RNUrlPreview extends React.PureComponent {
       titleStyle,
       titleNumberOfLines,
       descriptionStyle,
-      descriptionNumberOfLines
+      descriptionNumberOfLines,
+      imageProps
     } = this.props;
     return this.state.isUri
       ? this.renderLinkPreview(
@@ -175,7 +185,8 @@ export default class RNUrlPreview extends React.PureComponent {
           titleStyle,
           descriptionStyle,
           titleNumberOfLines,
-          descriptionNumberOfLines
+          descriptionNumberOfLines,
+          imageProps
         )
       : null;
   }
@@ -228,7 +239,8 @@ RNUrlPreview.defaultProps = {
     alignSelf: "flex-start",
     fontFamily: "Helvetica"
   },
-  descriptionNumberOfLines: Platform.isPad ? 4 : 3
+  descriptionNumberOfLines: Platform.isPad ? 4 : 3,
+  imageProps: { resizeMode: "contain" }
 };
 
 RNUrlPreview.propTypes = {
