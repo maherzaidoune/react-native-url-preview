@@ -17,6 +17,7 @@ export default class RNUrlPreview extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
+      text: props.text,
       isUri: false,
       linkTitle: undefined,
       linkDesc: undefined,
@@ -55,11 +56,16 @@ export default class RNUrlPreview extends React.PureComponent {
       });
   };
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.text !== null) {
-      this.getPreview(nextProps.text);
-    } else {
-      this.setState({ isUri: false });
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.text !== prevState.text) {
+      return { text: nextProps.text };
+    } else return null;
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.text !== this.props.text) {
+      this.setState({ text: this.props.text });
+      this.getPreview(this.props.text);
     }
   }
 
@@ -133,7 +139,7 @@ export default class RNUrlPreview extends React.PureComponent {
       <TouchableOpacity
         style={[styles.containerStyle, containerStyle]}
         activeOpacity={0.9}
-        onPress={() => this._onLinkPressed()}
+        onPress={this._onLinkPressed}
       >
         {this.renderImage(
           imageLink,
