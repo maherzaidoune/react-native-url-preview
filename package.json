@@ -4,7 +4,9 @@
   "description": "react native url previewer",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "keywords": [
     "react-native",
@@ -24,7 +26,8 @@
     "react-native-windows": "0.41.0-rc.1"
   },
   "dependencies": {
-    "link-preview-js": "^1.4.3"
+    "link-preview-js": "^1.4.3",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {},
   "repository": {
@@ -34,5 +37,6 @@
   "bugs": {
     "url": "https://github.com/maherzaidoune/react-native-url-preview/issues"
   },
-  "homepage": "https://github.com/maherzaidoune/react-native-url-preview#readme"
+  "homepage": "https://github.com/maherzaidoune/react-native-url-preview#readme",
+  "snyk": true
 }
