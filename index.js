@@ -27,8 +27,10 @@ export default class RNUrlPreview extends React.PureComponent {
   }
 
   getPreview = text => {
+    const { onError, onLoad } = this.props;
     LinkPreview.getPreview(text)
       .then(data => {
+        onLoad(data);
         this.setState({
           isUri: true,
           linkTitle: data.title ? data.title : undefined,
@@ -50,6 +52,7 @@ export default class RNUrlPreview extends React.PureComponent {
         });
       })
       .catch(error => {
+        onError(error);
         this.setState({ isUri: false });
         console.log("LinkPreview error : ", error);
       });
@@ -199,6 +202,8 @@ const styles = {
 };
 
 RNUrlPreview.defaultProps = {
+  onLoad: () => {},
+  onError: () => {},
   text: null,
   containerStyle: {
     backgroundColor: "rgba(239, 239, 244,0.62)",
@@ -244,6 +249,8 @@ RNUrlPreview.defaultProps = {
 };
 
 RNUrlPreview.propTypes = {
+  onLoad: PropTypes.func,
+  onError: PropTypes.func,
   text: PropTypes.string,
   containerStyle: ViewPropTypes.style,
   imageStyle: ViewPropTypes.style,

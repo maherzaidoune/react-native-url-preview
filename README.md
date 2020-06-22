@@ -4,7 +4,7 @@
 [![NPM](https://nodei.co/npm/react-native-url-preview.png)](https://www.npmjs.com/package/react-native-url-preview)
 
 
-Parses text and wraps URLs , transform the url to a beautiful link preview 
+Parses text and wraps URLs , transform the url to a beautiful link preview
 
 ## Getting started 🐜
 
@@ -43,6 +43,8 @@ Please refer to the [react-native-url-preview example](https://github.com/maherz
 | titleNumberOfLines       |    NO     | 2                          | `number`  | self explanatory i believe                             |
 | descriptionNumberOfLines |    NO     | Ipad?4:3                   | `number`  | self explanatory i believe                             |
 | imageProps               |    NO     | `{ resizeMode: "contain"}` | `object`  | you can pass a custom props to image                   |
+| onLoad                   |    NO     | `() => {}`                 | `function`| callback called when url preview data is loaded          |
+| onError                  |    NO     | `() => {}`                 | `function`| callback called if url preview fails to load           |
 
 ## Credits 🐜
 
