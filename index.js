@@ -54,14 +54,13 @@ export default class RNUrlPreview extends React.PureComponent {
       .catch(error => {
         onError(error);
         this.setState({ isUri: false });
-        console.log("LinkPreview error : ", error);
       });
   };
 
   componentDidUpdate(nextProps) {
-    if (nextProps.text !== null) {
+    if (nextProps.text !== this.props.text) {
       this.getPreview(nextProps.text);
-    } else {
+    } else if (nextProps.text == null) {
       this.setState({ isUri: false });
     }
   }
