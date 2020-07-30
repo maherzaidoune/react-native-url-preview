@@ -24,7 +24,7 @@
     "react-native-windows": "0.41.0-rc.1"
   },
   "dependencies": {
-    "link-preview-js": "^1.4.3"
+    "link-preview-js": "2.0.4"
   },
   "devDependencies": {},
   "repository": {

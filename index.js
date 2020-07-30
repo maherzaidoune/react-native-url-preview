@@ -1,5 +1,5 @@
 import React from "react";
-import LinkPreview from "link-preview-js";
+import {getLinkPreview} from "link-preview-js";
 import PropTypes from "prop-types";
 import {
   Image,
@@ -28,7 +28,7 @@ export default class RNUrlPreview extends React.PureComponent {
 
   getPreview = text => {
     const { onError, onLoad } = this.props;
-    LinkPreview.getPreview(text)
+    getLinkPreview(text)
       .then(data => {
         onLoad(data);
         this.setState({
