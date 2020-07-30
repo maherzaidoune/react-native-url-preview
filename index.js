@@ -115,7 +115,6 @@ export default class RNUrlPreview extends React.PureComponent {
     );
   };
   renderLinkPreview = (
-    text,
     containerStyle,
     imageLink,
     faviconLink,
@@ -174,7 +173,6 @@ export default class RNUrlPreview extends React.PureComponent {
     } = this.props;
     return this.state.isUri
       ? this.renderLinkPreview(
-          text,
           containerStyle,
           this.state.linkImg,
           this.state.linkFavicon,
