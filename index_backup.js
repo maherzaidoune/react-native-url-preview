@@ -1,54 +1,57 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {getLinkPreview} from 'link-preview-js';
 import PropTypes from 'prop-types';
 import {Image, Linking, Platform, Text, TouchableOpacity, View, ViewPropTypes} from 'react-native';
 
 const REGEX = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/g;
 
-export const RNUrlPreview = props => {
-  const[isUri, setIsUri] = useState(false)
-  const[linkTitle, setLinkTitle] = useState(undefined)
-  const[linkImg, setLinkImg] = useState(undefined)
-  const[linkDesc, setLinkDesc] = useState(undefined)
-  const[linkFavicon, setLinkFavicon] = useState(undefined)
+export default class RNUrlPreview extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isUri: false,
+      linkTitle: undefined,
+      linkDesc: undefined,
+      linkFavicon: undefined,
+      linkImg: undefined,
+    };
+    this.getPreview(props.text);
+  }
 
   getPreview = text => {
-    const {onError, onLoad} = props;
+    const {onError, onLoad} = this.props;
     getLinkPreview(text)
       .then(data => {
         onLoad(data);
-
-        setIsUri(true);
-        setLinkTitle(data.title);
-        setLinkDesc(data.description);
-        
-        const linkImage = data.images && data.images.length > 0
-        ? data.images.find(function(element) {
-            return element.includes('.png') || element.includes('.jpg') || element.includes('.jpeg');
-          })
-        : undefined;
-        setLinkImg(linkImage);
-        
-        const linkFavicon = data.favicons && data.favicons.length > 0 ? data.favicons[data.favicons.length - 1] : undefined;
-        setLinkFavicon(linkFavicon);
-        
+        this.setState({
+          isUri: true,
+          linkTitle: data.title ? data.title : undefined,
+          linkDesc: data.description ? data.description : undefined,
+          linkImg:
+            data.images && data.images.length > 0
+              ? data.images.find(function(element) {
+                  return element.includes('.png') || element.includes('.jpg') || element.includes('.jpeg');
+                })
+              : undefined,
+          linkFavicon: data.favicons && data.favicons.length > 0 ? data.favicons[data.favicons.length - 1] : undefined,
+        });
       })
       .catch(error => {
         onError(error);
-        setIsUri(false);
+        this.setState({isUri: false});
       });
   };
 
   componentDidUpdate(nextProps) {
-    if (nextProps.text !== props.text) {
-      getPreview(nextProps.text);
+    if (nextProps.text !== this.props.text) {
+      this.getPreview(nextProps.text);
     } else if (nextProps.text == null) {
-      setIsUri(false);
+      this.setState({isUri: false});
     }
-  };
+  }
 
   _onLinkPressed = () => {
-    Linking.openURL(props.text.match(REGEX)[0]);
+    Linking.openURL(this.props.text.match(REGEX)[0]);
   };
 
   renderImage = (imageLink, faviconLink, imageStyle, faviconStyle, imageProps) => {
@@ -92,49 +95,49 @@ export const RNUrlPreview = props => {
     imageProps,
   ) => {
     return (
-      <TouchableOpacity style={[styles.containerStyle, containerStyle]} activeOpacity={0.9} onPress={() => _onLinkPressed()}>
-        {renderImage(imageLink, faviconLink, imageStyle, faviconStyle, imageProps)}
-        {renderText(showTitle, showDescription, title, description, textContainerStyle, titleStyle, descriptionStyle, titleNumberOfLines, descriptionNumberOfLines)}
+      <TouchableOpacity style={[styles.containerStyle, containerStyle]} activeOpacity={0.9} onPress={() => this._onLinkPressed()}>
+        {this.renderImage(imageLink, faviconLink, imageStyle, faviconStyle, imageProps)}
+        {this.renderText(showTitle, showDescription, title, description, textContainerStyle, titleStyle, descriptionStyle, titleNumberOfLines, descriptionNumberOfLines)}
       </TouchableOpacity>
     );
   };
 
-  const {
-    text,
-    containerStyle,
-    imageStyle,
-    faviconStyle,
-    textContainerStyle,
-    title,
-    description,
-    titleStyle,
-    titleNumberOfLines,
-    descriptionStyle,
-    descriptionNumberOfLines,
-    imageProps,
-  } = props;
-
-  return isUri
-    ? renderLinkPreview(
-        containerStyle,
-        linkImg,
-        linkFavicon,
-        imageStyle,
-        faviconStyle,
-        title,
-        description,
-        linkTitle,
-        linkDesc,
-        textContainerStyle,
-        titleStyle,
-        descriptionStyle,
-        titleNumberOfLines,
-        descriptionNumberOfLines,
-        imageProps,
-      )
-    : null;
+  render() {
+    const {
+      text,
+      containerStyle,
+      imageStyle,
+      faviconStyle,
+      textContainerStyle,
+      title,
+      description,
+      titleStyle,
+      titleNumberOfLines,
+      descriptionStyle,
+      descriptionNumberOfLines,
+      imageProps,
+    } = this.props;
+    return this.state.isUri
+      ? this.renderLinkPreview(
+          containerStyle,
+          this.state.linkImg,
+          this.state.linkFavicon,
+          imageStyle,
+          faviconStyle,
+          title,
+          description,
+          this.state.linkTitle,
+          this.state.linkDesc,
+          textContainerStyle,
+          titleStyle,
+          descriptionStyle,
+          titleNumberOfLines,
+          descriptionNumberOfLines,
+          imageProps,
+        )
+      : null;
+  }
 }
-
 
 const styles = {
   containerStyle: {
