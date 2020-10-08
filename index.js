@@ -39,13 +39,11 @@ export const RNUrlPreview = props => {
       });
   };
   useEffect(() => {
-    return () => {
       if (nextProps.text !== props.text) {
         getPreview(nextProps.text);
       } else if (nextProps.text == null) {
         setIsUri(false);
       }
-    };
   }, []);
   
 
