@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {getLinkPreview} from 'link-preview-js';
 import PropTypes from 'prop-types';
 import {Image, Linking, Platform, Text, TouchableOpacity, View, ViewPropTypes} from 'react-native';
@@ -38,14 +38,16 @@ export const RNUrlPreview = props => {
         setIsUri(false);
       });
   };
-
-  componentDidUpdate(nextProps) {
-    if (nextProps.text !== props.text) {
-      getPreview(nextProps.text);
-    } else if (nextProps.text == null) {
-      setIsUri(false);
-    }
-  };
+  useEffect(() => {
+    return () => {
+      if (nextProps.text !== props.text) {
+        getPreview(nextProps.text);
+      } else if (nextProps.text == null) {
+        setIsUri(false);
+      }
+    };
+  }, []);
+  
 
   _onLinkPressed = () => {
     Linking.openURL(props.text.match(REGEX)[0]);
