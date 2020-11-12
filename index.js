@@ -1,19 +1,19 @@
-import React, {useState, useEffect} from 'react';
-import {getLinkPreview} from 'link-preview-js';
+import React, { useState, useEffect } from 'react';
+import { getLinkPreview } from 'link-preview-js';
 import PropTypes from 'prop-types';
-import {Image, Linking, Platform, Text, TouchableOpacity, View, ViewPropTypes} from 'react-native';
+import { Image, Linking, Platform, Text, TouchableOpacity, View, ViewPropTypes } from 'react-native';
 
 const REGEX = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/g;
 
 export const RNUrlPreview = props => {
-  const[isUri, setIsUri] = useState(false)
-  const[linkTitle, setLinkTitle] = useState(undefined)
-  const[linkImg, setLinkImg] = useState(undefined)
-  const[linkDesc, setLinkDesc] = useState(undefined)
-  const[linkFavicon, setLinkFavicon] = useState(undefined)
+  const [isUri, setIsUri] = useState(false)
+  const [linkTitle, setLinkTitle] = useState(undefined)
+  const [linkImg, setLinkImg] = useState(undefined)
+  const [linkDesc, setLinkDesc] = useState(undefined)
+  const [linkFavicon, setLinkFavicon] = useState(undefined)
 
   getPreview = text => {
-    const {onError, onLoad} = props;
+    const { onError, onLoad } = props;
     getLinkPreview(text)
       .then(data => {
         onLoad(data);
@@ -21,17 +21,17 @@ export const RNUrlPreview = props => {
         setIsUri(true);
         setLinkTitle(data.title);
         setLinkDesc(data.description);
-        
+
         const linkImage = data.images && data.images.length > 0
-        ? data.images.find(function(element) {
+          ? data.images.find(function (element) {
             return element.includes('.png') || element.includes('.jpg') || element.includes('.jpeg');
           })
-        : undefined;
+          : undefined;
         setLinkImg(linkImage);
-        
+
         const linkFavicon = data.favicons && data.favicons.length > 0 ? data.favicons[data.favicons.length - 1] : undefined;
         setLinkFavicon(linkFavicon);
-        
+
       })
       .catch(error => {
         onError(error);
@@ -39,13 +39,13 @@ export const RNUrlPreview = props => {
       });
   };
   useEffect(() => {
-      if (nextProps.text !== props.text) {
-        getPreview(nextProps.text);
-      } else if (nextProps.text == null) {
-        setIsUri(false);
-      }
-  }, []);
-  
+    if (props.text) {
+      getPreview(props.text);
+    } else if (props.text == null) {
+      setIsUri(false);
+    }
+  }, [props.text]);
+
 
   _onLinkPressed = () => {
     Linking.openURL(props.text.match(REGEX)[0]);
@@ -53,9 +53,9 @@ export const RNUrlPreview = props => {
 
   renderImage = (imageLink, faviconLink, imageStyle, faviconStyle, imageProps) => {
     return imageLink ? (
-      <Image style={imageStyle} source={{uri: imageLink}} {...imageProps} />
+      <Image style={imageStyle} source={{ uri: imageLink }} {...imageProps} />
     ) : faviconLink ? (
-      <Image style={faviconStyle} source={{uri: faviconLink}} {...imageProps} />
+      <Image style={faviconStyle} source={{ uri: faviconLink }} {...imageProps} />
     ) : null;
   };
   renderText = (showTitle, showDescription, title, description, textContainerStyle, titleStyle, descriptionStyle, titleNumberOfLines, descriptionNumberOfLines) => {
@@ -116,22 +116,22 @@ export const RNUrlPreview = props => {
 
   return isUri
     ? renderLinkPreview(
-        containerStyle,
-        linkImg,
-        linkFavicon,
-        imageStyle,
-        faviconStyle,
-        title,
-        description,
-        linkTitle,
-        linkDesc,
-        textContainerStyle,
-        titleStyle,
-        descriptionStyle,
-        titleNumberOfLines,
-        descriptionNumberOfLines,
-        imageProps,
-      )
+      containerStyle,
+      linkImg,
+      linkFavicon,
+      imageStyle,
+      faviconStyle,
+      title,
+      description,
+      linkTitle,
+      linkDesc,
+      textContainerStyle,
+      titleStyle,
+      descriptionStyle,
+      titleNumberOfLines,
+      descriptionNumberOfLines,
+      imageProps,
+    )
     : null;
 }
 
@@ -143,8 +143,8 @@ const styles = {
 };
 
 RNUrlPreview.defaultProps = {
-  onLoad: () => {},
-  onError: () => {},
+  onLoad: () => { },
+  onError: () => { },
   text: null,
   containerStyle: {
     backgroundColor: 'rgba(239, 239, 244,0.62)',
@@ -187,7 +187,7 @@ RNUrlPreview.defaultProps = {
     fontFamily: 'Helvetica',
   },
   descriptionNumberOfLines: Platform.isPad ? 4 : 3,
-  imageProps: {resizeMode: 'contain'},
+  imageProps: { resizeMode: 'contain' },
 };
 
 RNUrlPreview.propTypes = {
