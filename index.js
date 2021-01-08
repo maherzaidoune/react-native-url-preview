@@ -15,12 +15,12 @@ export default class RNUrlPreview extends React.PureComponent {
       linkFavicon: undefined,
       linkImg: undefined,
     };
-    this.getPreview(props.text);
+    this.getPreview(props.text, props.requestOptions);
   }
 
-  getPreview = text => {
+  getPreview = (text, options) => {
     const {onError, onLoad} = this.props;
-    getLinkPreview(text)
+    getLinkPreview(text, options)
       .then(data => {
         onLoad(data);
         this.setState({
@@ -149,6 +149,7 @@ RNUrlPreview.defaultProps = {
   onLoad: () => {},
   onError: () => {},
   text: null,
+  requestOptions: {},
   containerStyle: {
     backgroundColor: 'rgba(239, 239, 244,0.62)',
     alignItems: 'center',
@@ -207,4 +208,9 @@ RNUrlPreview.propTypes = {
   titleNumberOfLines: Text.propTypes.numberOfLines,
   descriptionStyle: Text.propTypes.style,
   descriptionNumberOfLines: Text.propTypes.numberOfLines,
+  requestOptions: PropTypes.shape({
+    headers: PropTypes.objectOf(PropTypes.string),
+    imagesPropertyType: PropTypes.string,
+    proxyUrl: PropTypes.string 
+  })
 };
