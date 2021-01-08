@@ -44,9 +44,9 @@ Please refer to the [react-native-url-preview example](https://github.com/maherz
 | titleNumberOfLines       |    NO     | 2                          | `number`  | self explanatory i believe                             |
 | descriptionNumberOfLines |    NO     | Ipad?4:3                   | `number`  | self explanatory i believe                             |
 | imageProps               |    NO     | `{ resizeMode: "contain"}` | `object`  | you can pass a custom props to image                   |
+| requestOptions           |    NO     | `{}`                       | `object`  | pass additional options to url preview request
 | onLoad                   |    NO     | `() => {}`                 | `function`| callback called when url preview data is loaded          |
 | onError                  |    NO     | `() => {}`                 | `function`| callback called if url preview fails to load           |
-
 ## Credits 🐜
 
 - Thanks to [marouan frih](https://github.com/Madm0x) for the REGEX
