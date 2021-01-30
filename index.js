@@ -180,7 +180,6 @@ RNUrlPreview.defaultProps = {
     marginRight: 10,
     marginBottom: 5,
     alignSelf: 'flex-start',
-    fontFamily: 'Helvetica',
   },
   titleNumberOfLines: 2,
   descriptionStyle: {
@@ -188,7 +187,6 @@ RNUrlPreview.defaultProps = {
     color: '#81848A',
     marginRight: 10,
     alignSelf: 'flex-start',
-    fontFamily: 'Helvetica',
   },
   descriptionNumberOfLines: Platform.isPad ? 4 : 3,
   imageProps: {resizeMode: 'contain'},
