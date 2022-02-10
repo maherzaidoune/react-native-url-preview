@@ -196,19 +196,19 @@ RNUrlPreview.propTypes = {
   onLoad: PropTypes.func,
   onError: PropTypes.func,
   text: PropTypes.string,
-  containerStyle: ViewPropTypes.style,
-  imageStyle: ViewPropTypes.style,
-  faviconStyle: ViewPropTypes.style,
-  textContainerStyle: ViewPropTypes.style,
+  containerStyle: ViewPropTypes ? ViewPropTypes.style : PropTypes.object,
+  imageStyle: ViewPropTypes ? ViewPropTypes.style : PropTypes.object,
+  faviconStyle: ViewPropTypes ? ViewPropTypes.style : PropTypes.object,
+  textContainerStyle: ViewPropTypes ? ViewPropTypes.style : PropTypes.object,
   title: PropTypes.bool,
   description: PropTypes.bool,
-  titleStyle: Text.propTypes.style,
-  titleNumberOfLines: Text.propTypes.numberOfLines,
-  descriptionStyle: Text.propTypes.style,
-  descriptionNumberOfLines: Text.propTypes.numberOfLines,
+  titleStyle: Text.propTypes ? Text.propTypes.style : PropTypes.object,
+  titleNumberOfLines: Text.propTypes ? Text.propTypes.numberOfLines : PropTypes.number,
+  descriptionStyle: Text.propTypes ? Text.propTypes.style : PropTypes.object,
+  descriptionNumberOfLines: Text.propTypes ? Text.propTypes.numberOfLines : PropTypes.number,
   requestOptions: PropTypes.shape({
     headers: PropTypes.objectOf(PropTypes.string),
     imagesPropertyType: PropTypes.string,
-    proxyUrl: PropTypes.string 
+    proxyUrl: PropTypes.string
   })
 };
